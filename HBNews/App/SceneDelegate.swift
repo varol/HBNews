@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -15,17 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let windowScene = UIWindowScene(session: session, connectionOptions: connectionOptions)
         self.window = UIWindow(windowScene: windowScene)
         let viewController = SplashRouter.setupModule()
-        self.window?.rootViewController = viewController
-        self.window?.makeKeyAndVisible()
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
     }
-
+    
     func sceneDidBecomeActive(_ scene: UIScene) {
     }
-
+    
     func sceneWillResignActive(_ scene: UIScene) {
     }
 
@@ -34,7 +34,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
     }
-
-
 }
 

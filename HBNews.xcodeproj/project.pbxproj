@@ -21,6 +21,18 @@
 		F9A295D326B476DD002FF335 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F9A295D226B476DD002FF335 /* Alamofire */; };
 		F9A295D626B47753002FF335 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295D526B47753002FF335 /* NetworkManager.swift */; };
 		F9A295D926B47905002FF335 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295D826B47905002FF335 /* BaseViewController.swift */; };
+		F9A295E026B47DC7002FF335 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295DC26B47DC7002FF335 /* HomePresenter.swift */; };
+		F9A295E126B47DC7002FF335 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295DD26B47DC7002FF335 /* HomeRouter.swift */; };
+		F9A295E326B47DC7002FF335 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295DF26B47DC7002FF335 /* HomeInteractor.swift */; };
+		F9A295E626B47DDE002FF335 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295E426B47DDE002FF335 /* HomeViewController.swift */; };
+		F9A295E726B47DDE002FF335 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A295E526B47DDE002FF335 /* HomeViewController.xib */; };
+		F9A295E926B49C20002FF335 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295E826B49C20002FF335 /* ServiceManager.swift */; };
+		F9A295EB26B49D3B002FF335 /* NewsSourcesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295EA26B49D3A002FF335 /* NewsSourcesResponse.swift */; };
+		F9A295ED26B49D9E002FF335 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295EC26B49D9E002FF335 /* Router.swift */; };
+		F9A295EF26B4AAE0002FF335 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295EE26B4AAE0002FF335 /* Extensions.swift */; };
+		F9A295F326B4AB32002FF335 /* SourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295F126B4AB32002FF335 /* SourcesCell.swift */; };
+		F9A295F426B4AB32002FF335 /* SourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A295F226B4AB32002FF335 /* SourcesCell.xib */; };
+		F9A295F626B4B001002FF335 /* SourcesCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295F526B4B001002FF335 /* SourcesCellPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +72,18 @@
 		F9A295CE26B471AA002FF335 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		F9A295D526B47753002FF335 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F9A295D826B47905002FF335 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F9A295DC26B47DC7002FF335 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		F9A295DD26B47DC7002FF335 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		F9A295DF26B47DC7002FF335 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		F9A295E426B47DDE002FF335 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F9A295E526B47DDE002FF335 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		F9A295E826B49C20002FF335 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		F9A295EA26B49D3A002FF335 /* NewsSourcesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourcesResponse.swift; sourceTree = "<group>"; };
+		F9A295EC26B49D9E002FF335 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		F9A295EE26B4AAE0002FF335 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F9A295F126B4AB32002FF335 /* SourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesCell.swift; sourceTree = "<group>"; };
+		F9A295F226B4AB32002FF335 /* SourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourcesCell.xib; sourceTree = "<group>"; };
+		F9A295F526B4B001002FF335 /* SourcesCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesCellPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +135,10 @@
 		F9A2959126B46F7D002FF335 /* HBNews */ = {
 			isa = PBXGroup;
 			children = (
+				F9A295C226B46FD1002FF335 /* App */,
 				F9A295D726B478E7002FF335 /* Base */,
 				F9A295D426B47741002FF335 /* Network */,
 				F9A295C326B4711F002FF335 /* Module */,
-				F9A295C226B46FD1002FF335 /* App */,
 			);
 			path = HBNews;
 			sourceTree = "<group>";
@@ -153,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F9A295CC26B4715A002FF335 /* Splash */,
+				F9A295DB26B47D6A002FF335 /* Home */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -173,6 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				F9A295D526B47753002FF335 /* NetworkManager.swift */,
+				F9A295E826B49C20002FF335 /* ServiceManager.swift */,
+				F9A295EC26B49D9E002FF335 /* Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -181,8 +208,41 @@
 			isa = PBXGroup;
 			children = (
 				F9A295D826B47905002FF335 /* BaseViewController.swift */,
+				F9A295EE26B4AAE0002FF335 /* Extensions.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		F9A295DB26B47D6A002FF335 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F9A295F726B4B56F002FF335 /* Entity */,
+				F9A295F026B4AB10002FF335 /* Views */,
+				F9A295DC26B47DC7002FF335 /* HomePresenter.swift */,
+				F9A295DD26B47DC7002FF335 /* HomeRouter.swift */,
+				F9A295DF26B47DC7002FF335 /* HomeInteractor.swift */,
+				F9A295E426B47DDE002FF335 /* HomeViewController.swift */,
+				F9A295E526B47DDE002FF335 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F9A295F026B4AB10002FF335 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9A295F126B4AB32002FF335 /* SourcesCell.swift */,
+				F9A295F226B4AB32002FF335 /* SourcesCell.xib */,
+				F9A295F526B4B001002FF335 /* SourcesCellPresenter.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9A295F726B4B56F002FF335 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F9A295EA26B49D3A002FF335 /* NewsSourcesResponse.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +356,9 @@
 			files = (
 				F9A2959F26B46F7F002FF335 /* LaunchScreen.storyboard in Resources */,
 				F9A295D026B471AA002FF335 /* SplashViewController.xib in Resources */,
+				F9A295F426B4AB32002FF335 /* SourcesCell.xib in Resources */,
 				F9A2959C26B46F7F002FF335 /* Assets.xcassets in Resources */,
+				F9A295E726B47DDE002FF335 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,13 +384,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9A2959326B46F7D002FF335 /* AppDelegate.swift in Sources */,
+				F9A295F626B4B001002FF335 /* SourcesCellPresenter.swift in Sources */,
 				F9A295CB26B47155002FF335 /* SplashInteractor.swift in Sources */,
 				F9A295C926B47155002FF335 /* SplashRouter.swift in Sources */,
+				F9A295F326B4AB32002FF335 /* SourcesCell.swift in Sources */,
+				F9A295E326B47DC7002FF335 /* HomeInteractor.swift in Sources */,
+				F9A295EB26B49D3B002FF335 /* NewsSourcesResponse.swift in Sources */,
+				F9A295E926B49C20002FF335 /* ServiceManager.swift in Sources */,
 				F9A295D626B47753002FF335 /* NetworkManager.swift in Sources */,
+				F9A295ED26B49D9E002FF335 /* Router.swift in Sources */,
 				F9A295CF26B471AA002FF335 /* SplashViewController.swift in Sources */,
 				F9A295D926B47905002FF335 /* BaseViewController.swift in Sources */,
+				F9A295E026B47DC7002FF335 /* HomePresenter.swift in Sources */,
+				F9A295EF26B4AAE0002FF335 /* Extensions.swift in Sources */,
 				F9A2959526B46F7D002FF335 /* SceneDelegate.swift in Sources */,
 				F9A295C826B47155002FF335 /* SplashPresenter.swift in Sources */,
+				F9A295E126B47DC7002FF335 /* HomeRouter.swift in Sources */,
+				F9A295E626B47DDE002FF335 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +572,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GDP6Y3828G;
 				INFOPLIST_FILE = HBNews/App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,7 +581,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -522,7 +594,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GDP6Y3828G;
 				INFOPLIST_FILE = HBNews/App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,7 +603,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
