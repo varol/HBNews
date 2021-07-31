@@ -10,13 +10,17 @@ import Foundation
 protocol DetailsPresenterInterface: AnyObject {
     func viewDidLoad()
     func numberOfItems() -> Int
-    func fetchNewsDetails(with sourceId: String)
+    func fetchNewsDetails(with sourceId: String, page: Int)
     func article(_ index: Int) -> Article?
-    func didSelectRowAt(index: Int)
+    func didSelectItemAt(index: Int)
+    func fetchNextPage()
 }
 
 final class DetailsPresenter: DetailsPresenterInterface {
     private var articles: [Article] = []
+    private var shouldFetchNextPage: Bool = true
+    private var isLoading: Bool = false
+    private var pageNumber: Int = 1
 
     unowned var view: DetailsViewControllerInterface?
     let router: DetailsRouterInterface!
@@ -37,7 +41,7 @@ final class DetailsPresenter: DetailsPresenterInterface {
         }
         
         if let sourceId = view?.getSource()?.id {
-            fetchNewsDetails(with: sourceId)
+            fetchNewsDetails(with: sourceId, page: pageNumber)
             print(sourceId)
         }
     }
@@ -46,28 +50,39 @@ final class DetailsPresenter: DetailsPresenterInterface {
         articles.count
     }
     
-    func fetchNewsDetails(with sourceId: String) {
-        view?.showLoadingView()
-        interactor.fetchNewsDetails(with: sourceId)
+    func fetchNewsDetails(with sourceId: String, page: Int) {
+        interactor.fetchNewsDetails(with: sourceId, page: page)
     }
     
     func article(_ index: Int) -> Article? {
         articles[safe: index]
     }
     
-    func didSelectRowAt(index: Int) {
+    func didSelectItemAt(index: Int) {
         if let urlString = articles[safe: index]?.url, let url = URL(string: urlString){
             router.navigate(.openURL(url: url))
+        }
+    }
+    
+    func fetchNextPage() {
+        if shouldFetchNextPage {
+            pageNumber += 1
+            if let sourceId = view?.getSource()?.id {
+                fetchNewsDetails(with: sourceId, page: pageNumber)
+            }
         }
     }
 }
 
 extension DetailsPresenter: DetailsInteractorOutput {
     func fetchNewsDetailsOutput(result: NewsDetailsResult) {
-        view?.hideLoadingView()
         switch result {
         case .success(let detailsResult):
-            self.articles = detailsResult.articles
+            if let articles = detailsResult.articles {
+                self.articles.append(contentsOf: articles)
+            } else {
+                shouldFetchNextPage = false
+            }
             view?.reloadData()
         case .failure(let error):
             print(error)

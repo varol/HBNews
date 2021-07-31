@@ -10,7 +10,7 @@ import Foundation
 protocol MainNewsServiceProtocol {
     func fetchNewsSources(completionHandler: @escaping
                         (NewsSourcesResult) -> ())
-    func fetchDetails(sourceId: String, completionHandler: @escaping
+    func fetchDetails(sourceId: String, page: Int, completionHandler: @escaping
                         (NewsDetailsResult) -> ())
 }
 
@@ -21,8 +21,8 @@ struct MainNewsService: MainNewsServiceProtocol {
                                       completionHandler: completionHandler)
     }
     
-    func fetchDetails(sourceId: String, completionHandler: @escaping (NewsDetailsResult) -> ()) {
-        NetworkManager.shared.request(Router.everything(source: sourceId),
+    func fetchDetails(sourceId: String, page: Int, completionHandler: @escaping (NewsDetailsResult) -> ()) {
+        NetworkManager.shared.request(Router.everything(source: sourceId, page: page),
                                       decodeToType: NewsDetailsResponse.self,
                                       completionHandler: completionHandler)
 

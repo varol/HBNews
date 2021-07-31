@@ -15,7 +15,7 @@ protocol HomeViewControllerInterface: AnyObject {
     func setTitle(_ title: String)
 }
 
-class HomeViewController: BaseViewController, LoadingShowable {
+final class HomeViewController: BaseViewController, LoadingShowable {
     var presenter: HomePresenterInterface!
     @IBOutlet private weak var tableView: UITableView!
     

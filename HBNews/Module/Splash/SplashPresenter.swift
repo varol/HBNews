@@ -12,7 +12,7 @@ protocol SplashPresenterInterface: AnyObject {
 }
 
 final class SplashPresenter: SplashPresenterInterface {
-    unowned var view: SplashViewControllerInterface!
+    unowned var view: SplashViewControllerInterface?
     let router: SplashRouterInterface!
     let interactor: SplashInteractorInterface!
 
@@ -29,6 +29,12 @@ final class SplashPresenter: SplashPresenterInterface {
 
 extension SplashPresenter: SplashInteractorOutput {
     func internetConnection(status: Bool) {
-        status ? router.navigate(.homeScreen) : view.noConnection()
+        if status {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.router.navigate(.homeScreen)
+            }
+        } else {
+            view?.noConnection()
+        }
     }
 }

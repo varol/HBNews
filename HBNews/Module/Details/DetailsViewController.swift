@@ -17,7 +17,7 @@ protocol DetailsViewControllerInterface: AnyObject {
     func getSource() -> Source?
 }
 
-class DetailsViewController: BaseViewController, LoadingShowable {
+final class DetailsViewController: BaseViewController, LoadingShowable {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
     
@@ -72,7 +72,13 @@ extension DetailsViewController: DetailsViewControllerInterface {
 
 extension DetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.didSelectRowAt(index: indexPath.item)
+        presenter.didSelectItemAt(index: indexPath.item)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView == tableView,
+            (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height else { return }
+        presenter.fetchNextPage()
     }
 }
 

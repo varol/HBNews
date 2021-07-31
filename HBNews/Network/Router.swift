@@ -9,11 +9,13 @@ import Foundation
 import Alamofire
 
 enum Router: URLRequestConvertible {
-    static let apiKey = "e15dc43747ee46e9a1568ae7aab55ff5"
-    
+//    static let apiKey = "e15dc43747ee46e9a1568ae7aab55ff5"
+//    static let apiKey = "cd2f25cd0dc5414192b2dbf46e80773e"
+    static let apiKey = "f4412fb833304457a36ee5f32629a698"
+
     case sources
     case topHeadlines(source: String?)
-    case everything(source: String?)
+    case everything(source: String?, page: Int?)
 
     var baseURL: URL {
         return URL(string: "https://newsapi.org/v2/")!
@@ -35,9 +37,13 @@ enum Router: URLRequestConvertible {
             if let source = source {
                 param["sources"] = source
             }
-        case .everything(source: let source):
+        case .everything(source: let source, page: let page):
             if let source = source {
                 param["sources"] = source
+            }
+            
+            if let page = page {
+                param["page"] = page
             }
         }
         return param

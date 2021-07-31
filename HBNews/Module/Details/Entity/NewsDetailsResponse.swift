@@ -11,7 +11,7 @@ import Foundation
 struct NewsDetailsResponse: Codable {
     let status: String?
     let totalResults: Int?
-    let articles: [Article]
+    let articles: [Article]?
 }
 
 // MARK: - Article

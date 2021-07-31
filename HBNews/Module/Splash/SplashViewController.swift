@@ -11,7 +11,7 @@ protocol SplashViewControllerInterface: AnyObject {
     func noConnection()
 }
 
-class SplashViewController: BaseViewController {
+final class SplashViewController: BaseViewController {
     var presenter: SplashPresenterInterface!
     
     override func viewDidAppear(_ animated: Bool) {

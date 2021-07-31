@@ -2,9 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,14 +17,25 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="pcg-7p-E1y">
+                    <rect key="frame" x="94.5" y="335.5" width="225" height="225"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="225" id="N3F-MA-mys"/>
+                        <constraint firstAttribute="width" constant="225" id="vBF-Sp-Nv9"/>
+                    </constraints>
+                </imageView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemYellowColor"/>
-            <point key="canvasLocation" x="-4" y="109"/>
+            <color key="backgroundColor" red="0.99675136799999997" green="0.9072977901" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="pcg-7p-E1y" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Eh5-nV-u8J"/>
+                <constraint firstItem="pcg-7p-E1y" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Kr2-DT-Toa"/>
+            </constraints>
+            <point key="canvasLocation" x="-4.3478260869565224" y="108.48214285714285"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="splash" width="225" height="225"/>
     </resources>
 </document>
