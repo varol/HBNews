@@ -38,7 +38,6 @@ extension SplashRouter: SplashRouterInterface {
         case .homeScreen:
             guard let window = viewController?.view.window else { return }
             let viewController = HomeRouter.setupModule()
-            viewController.title = "News Sources"
             let navigationController = UINavigationController(rootViewController: viewController)
             window.rootViewController = navigationController
             window.makeKeyAndVisible()

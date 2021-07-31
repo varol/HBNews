@@ -10,9 +10,12 @@ import UIKit
 protocol HomeViewControllerInterface: AnyObject {
     func prepareTableView()
     func reloadData()
+    func showLoadingView()
+    func hideLoadingView()
+    func setTitle(_ title: String)
 }
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, LoadingShowable {
     var presenter: HomePresenterInterface!
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,10 +37,25 @@ extension HomeViewController: HomeViewControllerInterface {
     func reloadData() {
         tableView.reloadData()
     }
+    
+    func showLoadingView() {
+        showLoading()
+    }
+    
+    func hideLoadingView() {
+        hideLoading()
+    }
+    
+    func setTitle(_ title: String) {
+        self.title = title
+    }
+
 }
 
 extension HomeViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectRowAt(index: indexPath.item)
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {

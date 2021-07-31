@@ -11,26 +11,27 @@ protocol HomePresenterInterface: AnyObject {
     func viewDidLoad()
     func numberOfItems() -> Int
     func source(_ index: Int) -> Source?
-
+    func didSelectRowAt(index: Int)
 }
 
 final class HomePresenter: HomePresenterInterface {
     
-    weak var view: HomeViewControllerInterface!
+    weak var view: HomeViewControllerInterface?
     let router: HomeRouterInterface!
     let interactor: HomeInteractorInterface!
 
     private var sources: [Source] = []
 
-    init(interactor: HomeInteractorInterface,  router: HomeRouterInterface, view:  HomeViewControllerInterface) {
+    init(interactor: HomeInteractorInterface, router: HomeRouterInterface, view: HomeViewControllerInterface) {
         self.view = view
         self.interactor = interactor
         self.router = router
     }
     
     func viewDidLoad() {
-        view.prepareTableView()
-        interactor.fetchNewsSources()
+        view?.prepareTableView()
+        view?.setTitle("News Sources")
+        fetchNewsSources()
     }
     
     func numberOfItems() -> Int {
@@ -41,14 +42,24 @@ final class HomePresenter: HomePresenterInterface {
         sources[safe: index]
     }
 
+    private func fetchNewsSources(){
+        view?.showLoadingView()
+        interactor.fetchNewsSources()
+    }
+    
+    func didSelectRowAt(index: Int) {
+        guard let sourceId = source(index)?.id else { return }
+        router.navigate(.details(sourceId: sourceId))
+    }
 }
 
 extension HomePresenter: HomeInteractorOutput {
     func fetchNewsSourcesOutput(result: NewsSourcesResult) {
+        view?.hideLoadingView()
         switch result {
         case .success(let sourcesResult):
             sources = sourcesResult.sources
-            view.reloadData()
+            view?.reloadData()
         case .failure(let error):
             print(error)
         }

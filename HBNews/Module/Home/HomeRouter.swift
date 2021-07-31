@@ -12,10 +12,12 @@ protocol HomeRouterInterface: AnyObject {
 }
 
 enum HomeRoutes {
-
+    case details(sourceId: String)
 }
 
-class HomeRouter: NSObject {
+class HomeRouter {
+    weak var viewController: HomeViewController?
+
     static func setupModule() -> HomeViewController {
         let vc = HomeViewController()
         let interactor = HomeInteractor()
@@ -26,6 +28,7 @@ class HomeRouter: NSObject {
         
         vc.presenter = presenter
         interactor.output = presenter
+        router.viewController = vc
         return vc
     }
 }
@@ -33,7 +36,12 @@ class HomeRouter: NSObject {
 extension HomeRouter: HomeRouterInterface {
 
     func navigate(_ route: HomeRoutes) {
-        
+        switch route {
+        case .details(sourceId: let sourceId):
+            let vc = DetailsRouter.setupModule()
+            vc.sourceId = sourceId
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

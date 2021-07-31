@@ -9,43 +9,76 @@ import Foundation
 import Alamofire
 
 enum Router: URLRequestConvertible {
+    static let apiKey = "e15dc43747ee46e9a1568ae7aab55ff5"
+    
     case sources
+    case topHeadlines(source: String?)
     
     var baseURL: URL {
-        switch self {
-        case .sources:
-            return URL(string: "https://newsapi.org/v2/sources?apiKey=e15dc43747ee46e9a1568ae7aab55ff5")!
-        }
+        return URL(string: "https://newsapi.org/v2/")!
     }
 
     var method: HTTPMethod {
         switch self {
-        case .sources:
+        case .sources, .topHeadlines:
             return .get
         }
     }
     
     var parameters: [String : Any]? {
+        var param: Parameters = [:]
         switch self {
         case .sources:
             return nil
+        case .topHeadlines(source: let source):
+            if let source = source {
+                param["sources"] = source
+            }
         }
+        
+        return param
     }
     
-    var url: URL {
+    private var path: String {
         switch self {
         case .sources:
-            return URL(string: "https://newsapi.org/v2/sources?apiKey=e15dc43747ee46e9a1568ae7aab55ff5")!
+            return "sources"
+        case .topHeadlines(source: _):
+            return "top-headlines"
         }
     }
-    
+
     var encoding: ParameterEncoding {
         return JSONEncoding.default
     }
     
     func asURLRequest() throws -> URLRequest {
-        var urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: baseURL.appendingPathComponent(path))
+        // Http method
         urlRequest.httpMethod = method.rawValue
-        return try encoding.encode(urlRequest, with: parameters)
+        
+        // Common Headers
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        //Encoding
+        let encoding: ParameterEncoding = {
+            switch method {
+            case .get:
+                return URLEncoding.default
+            default:
+                return JSONEncoding.default
+            }
+        }()
+        
+        var completeParameters = parameters ?? [:]
+        
+        // add apiKey
+        completeParameters["apikey"] = Router.apiKey
+        
+        let urlRequestPrint = try encoding.encode(urlRequest, with: completeParameters)
+        debugPrint("final url ", urlRequestPrint.url ?? "")
+        
+        return try encoding.encode(urlRequest, with: completeParameters)
     }
 }

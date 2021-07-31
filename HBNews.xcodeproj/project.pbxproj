@@ -33,6 +33,13 @@
 		F9A295F326B4AB32002FF335 /* SourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295F126B4AB32002FF335 /* SourcesCell.swift */; };
 		F9A295F426B4AB32002FF335 /* SourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A295F226B4AB32002FF335 /* SourcesCell.xib */; };
 		F9A295F626B4B001002FF335 /* SourcesCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295F526B4B001002FF335 /* SourcesCellPresenter.swift */; };
+		F9A295FD26B53D38002FF335 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295FC26B53D38002FF335 /* LoadingView.swift */; };
+		F9A2960026B53D63002FF335 /* LoadingShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A295FF26B53D63002FF335 /* LoadingShowable.swift */; };
+		F9A2960526B54070002FF335 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2960126B54070002FF335 /* DetailsPresenter.swift */; };
+		F9A2960626B54070002FF335 /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2960226B54070002FF335 /* DetailsRouter.swift */; };
+		F9A2960826B54070002FF335 /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2960426B54070002FF335 /* DetailsInteractor.swift */; };
+		F9A2960B26B5408C002FF335 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2960926B5408C002FF335 /* DetailsViewController.swift */; };
+		F9A2960C26B5408C002FF335 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A2960A26B5408C002FF335 /* DetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +91,13 @@
 		F9A295F126B4AB32002FF335 /* SourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesCell.swift; sourceTree = "<group>"; };
 		F9A295F226B4AB32002FF335 /* SourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourcesCell.xib; sourceTree = "<group>"; };
 		F9A295F526B4B001002FF335 /* SourcesCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesCellPresenter.swift; sourceTree = "<group>"; };
+		F9A295FC26B53D38002FF335 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F9A295FF26B53D63002FF335 /* LoadingShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowable.swift; sourceTree = "<group>"; };
+		F9A2960126B54070002FF335 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		F9A2960226B54070002FF335 /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		F9A2960426B54070002FF335 /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
+		F9A2960926B5408C002FF335 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		F9A2960A26B5408C002FF335 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +149,7 @@
 		F9A2959126B46F7D002FF335 /* HBNews */ = {
 			isa = PBXGroup;
 			children = (
+				F9A295F926B53D02002FF335 /* Resources */,
 				F9A295C226B46FD1002FF335 /* App */,
 				F9A295D726B478E7002FF335 /* Base */,
 				F9A295D426B47741002FF335 /* Network */,
@@ -178,6 +193,7 @@
 			children = (
 				F9A295CC26B4715A002FF335 /* Splash */,
 				F9A295DB26B47D6A002FF335 /* Home */,
+				F9A295F826B53A7D002FF335 /* Details */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -208,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				F9A295D826B47905002FF335 /* BaseViewController.swift */,
-				F9A295EE26B4AAE0002FF335 /* Extensions.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -243,6 +258,52 @@
 				F9A295EA26B49D3A002FF335 /* NewsSourcesResponse.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		F9A295F826B53A7D002FF335 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				F9A2960126B54070002FF335 /* DetailsPresenter.swift */,
+				F9A2960226B54070002FF335 /* DetailsRouter.swift */,
+				F9A2960426B54070002FF335 /* DetailsInteractor.swift */,
+				F9A2960926B5408C002FF335 /* DetailsViewController.swift */,
+				F9A2960A26B5408C002FF335 /* DetailsViewController.xib */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		F9A295F926B53D02002FF335 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F9A295FE26B53D52002FF335 /* Utils */,
+				F9A295FB26B53D1F002FF335 /* Extensions */,
+				F9A295FA26B53D09002FF335 /* Views */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F9A295FA26B53D09002FF335 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9A295FC26B53D38002FF335 /* LoadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9A295FB26B53D1F002FF335 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F9A295EE26B4AAE0002FF335 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F9A295FE26B53D52002FF335 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F9A295FF26B53D63002FF335 /* LoadingShowable.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +420,7 @@
 				F9A295F426B4AB32002FF335 /* SourcesCell.xib in Resources */,
 				F9A2959C26B46F7F002FF335 /* Assets.xcassets in Resources */,
 				F9A295E726B47DDE002FF335 /* HomeViewController.xib in Resources */,
+				F9A2960C26B5408C002FF335 /* DetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +448,7 @@
 				F9A2959326B46F7D002FF335 /* AppDelegate.swift in Sources */,
 				F9A295F626B4B001002FF335 /* SourcesCellPresenter.swift in Sources */,
 				F9A295CB26B47155002FF335 /* SplashInteractor.swift in Sources */,
+				F9A2960026B53D63002FF335 /* LoadingShowable.swift in Sources */,
 				F9A295C926B47155002FF335 /* SplashRouter.swift in Sources */,
 				F9A295F326B4AB32002FF335 /* SourcesCell.swift in Sources */,
 				F9A295E326B47DC7002FF335 /* HomeInteractor.swift in Sources */,
@@ -393,13 +456,18 @@
 				F9A295E926B49C20002FF335 /* ServiceManager.swift in Sources */,
 				F9A295D626B47753002FF335 /* NetworkManager.swift in Sources */,
 				F9A295ED26B49D9E002FF335 /* Router.swift in Sources */,
+				F9A2960B26B5408C002FF335 /* DetailsViewController.swift in Sources */,
+				F9A2960626B54070002FF335 /* DetailsRouter.swift in Sources */,
 				F9A295CF26B471AA002FF335 /* SplashViewController.swift in Sources */,
 				F9A295D926B47905002FF335 /* BaseViewController.swift in Sources */,
 				F9A295E026B47DC7002FF335 /* HomePresenter.swift in Sources */,
 				F9A295EF26B4AAE0002FF335 /* Extensions.swift in Sources */,
 				F9A2959526B46F7D002FF335 /* SceneDelegate.swift in Sources */,
 				F9A295C826B47155002FF335 /* SplashPresenter.swift in Sources */,
+				F9A2960826B54070002FF335 /* DetailsInteractor.swift in Sources */,
+				F9A2960526B54070002FF335 /* DetailsPresenter.swift in Sources */,
 				F9A295E126B47DC7002FF335 /* HomeRouter.swift in Sources */,
+				F9A295FD26B53D38002FF335 /* LoadingView.swift in Sources */,
 				F9A295E626B47DDE002FF335 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
