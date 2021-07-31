@@ -12,9 +12,9 @@ enum Router: URLRequestConvertible {
 //    static let apiKey = "e15dc43747ee46e9a1568ae7aab55ff5"
 //    static let apiKey = "cd2f25cd0dc5414192b2dbf46e80773e"
 //    static let apiKey = "f4412fb833304457a36ee5f32629a698"
-    static let apiKey = "6443dc1f81aa412484f137493dd130e2"
+//    static let apiKey = "6443dc1f81aa412484f137493dd130e2"
+    static let apiKey = "946fc4a1132a43d2bbe341f536617621"
 
-    
     case sources
     case topHeadlines(source: String?)
     case everything(source: String?, page: Int?, qInTitle: String?)

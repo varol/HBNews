@@ -12,7 +12,7 @@ protocol SplashPresenterInterface: AnyObject {
 }
 
 final class SplashPresenter: SplashPresenterInterface {
-    unowned var view: SplashViewControllerInterface?
+    weak var view: SplashViewControllerInterface?
     let router: SplashRouterInterface!
     let interactor: SplashInteractorInterface!
 

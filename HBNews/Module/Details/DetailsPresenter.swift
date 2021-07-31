@@ -34,8 +34,9 @@ final class DetailsPresenter: DetailsPresenterInterface {
     private var isLoading: Bool = false
     private var pageNumber: Int = Constants.firstPageIndex
     private let throttler: ThrottlerInterface
+    weak var timer: Timer?
 
-    unowned var view: DetailsViewControllerInterface?
+    weak var view: DetailsViewControllerInterface?
     let router: DetailsRouterInterface!
     let interactor: DetailsInteractorInterface!
 
@@ -53,14 +54,13 @@ final class DetailsPresenter: DetailsPresenterInterface {
         view?.prepareTableView()
         view?.prepareNavigationBar()
         view?.prepareSearchBar(Constants.pageTitle)
-        
+        startTimer()
         if let title = view?.getSource()?.name {
             view?.setTitle(title)
         }
         
         if let sourceId = view?.getSource()?.id {
             fetchNewsDetails(with: sourceId, page: pageNumber)
-            print(sourceId)
         }
     }
     
@@ -72,6 +72,10 @@ final class DetailsPresenter: DetailsPresenterInterface {
         interactor.fetchNewsDetails(with: sourceId, page: page, qInTitle: nil)
     }
     
+    func refreshNewsDetails(with sourceId: String, page: Int) {
+        interactor.refreshNewsDetails(with: sourceId, page: page, qInTitle: nil)
+    }
+
     func article(_ index: Int) -> Article? {
         articles[safe: index]
     }
@@ -136,6 +140,24 @@ final class DetailsPresenter: DetailsPresenterInterface {
         view?.reloadData()
     }
     
+    func startTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            print("hello")
+            if let sourceId = self.view?.getSource()?.id {
+                self.refreshNewsDetails(with: sourceId, page: Constants.firstPageIndex)
+            }
+        }
+    }
+
+    func stopTimer() {
+        timer?.invalidate()
+    }
+
+    deinit {
+        stopTimer()
+    }
 }
 
 extension DetailsPresenter: DetailsInteractorOutput {
@@ -150,6 +172,23 @@ extension DetailsPresenter: DetailsInteractorOutput {
             
             checkAndReplaceForReadingList()
             view?.hideKeyboard()
+        case .failure(let error):
+            print(error)
+        }
+    }
+    
+    func refreshNewsDetailsOutput(result: NewsDetailsResult) {
+        switch result {
+        case .success(let refreshResult):
+            if refreshResult.articles?.first?.url != self.articles.first?.url {
+                if let articles = refreshResult.articles {
+                    self.articles.removeAll()
+                    pageNumber = Constants.firstPageIndex
+                    self.articles.append(contentsOf: articles)
+                }
+            }
+            checkAndReplaceForReadingList()
+
         case .failure(let error):
             print(error)
         }
