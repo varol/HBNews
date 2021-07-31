@@ -17,7 +17,7 @@ enum SplashRoutes {
 
 class SplashRouter: NSObject {
     weak var viewController: SplashViewController?
-    
+
     static func setupModule() -> SplashViewController {
         let vc = SplashViewController()
         let interactor = SplashInteractor()
@@ -40,7 +40,6 @@ extension SplashRouter: SplashRouterInterface {
             let viewController = HomeRouter.setupModule()
             let navigationController = UINavigationController(rootViewController: viewController)
             window.rootViewController = navigationController
-            window.makeKeyAndVisible()
         }
     }
 }

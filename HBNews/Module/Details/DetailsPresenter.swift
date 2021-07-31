@@ -14,6 +14,7 @@ protocol DetailsPresenterInterface: AnyObject {
     func article(_ index: Int) -> Article?
     func didSelectItemAt(index: Int)
     func fetchNextPage()
+    func searchNewsWithTitle(qInTitle: String)
 }
 
 final class DetailsPresenter: DetailsPresenterInterface {
@@ -21,15 +22,20 @@ final class DetailsPresenter: DetailsPresenterInterface {
     private var shouldFetchNextPage: Bool = true
     private var isLoading: Bool = false
     private var pageNumber: Int = 1
+    private let throttler: ThrottlerInterface
 
     unowned var view: DetailsViewControllerInterface?
     let router: DetailsRouterInterface!
     let interactor: DetailsInteractorInterface!
 
-    init(interactor: DetailsInteractorInterface,  router: DetailsRouterInterface, view:  DetailsViewControllerInterface) {
+    init(interactor: DetailsInteractorInterface,
+         router: DetailsRouterInterface,
+         view:  DetailsViewControllerInterface,
+         throttler: ThrottlerInterface = Throttler(minimumDelay: 0.7)) {
         self.view = view
         self.interactor = interactor
         self.router = router
+        self.throttler = throttler
     }
     
     func viewDidLoad() {
@@ -51,7 +57,7 @@ final class DetailsPresenter: DetailsPresenterInterface {
     }
     
     func fetchNewsDetails(with sourceId: String, page: Int) {
-        interactor.fetchNewsDetails(with: sourceId, page: page)
+        interactor.fetchNewsDetails(with: sourceId, page: page, qInTitle: nil)
     }
     
     func article(_ index: Int) -> Article? {
@@ -72,6 +78,20 @@ final class DetailsPresenter: DetailsPresenterInterface {
             }
         }
     }
+    
+    func searchNewsWithTitle(qInTitle: String) {
+        articles.removeAll()
+        pageNumber = 1
+        
+        throttler.throttle {[weak self] in
+            guard let self = self else { return }
+            if let sourceId = self.view?.getSource()?.id {
+                self.interactor.fetchNewsDetails(with: sourceId,
+                                                 page: self.pageNumber,
+                                                 qInTitle: qInTitle)
+            }
+        }
+    }
 }
 
 extension DetailsPresenter: DetailsInteractorOutput {
@@ -83,6 +103,8 @@ extension DetailsPresenter: DetailsInteractorOutput {
             } else {
                 shouldFetchNextPage = false
             }
+            
+            view?.hideKeyboard()
             view?.reloadData()
         case .failure(let error):
             print(error)

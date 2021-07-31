@@ -15,6 +15,7 @@ protocol DetailsViewControllerInterface: AnyObject {
     func hideLoadingView()
     func setTitle(_ title: String)
     func getSource() -> Source?
+    func hideKeyboard()
 }
 
 final class DetailsViewController: BaseViewController, LoadingShowable {
@@ -28,11 +29,6 @@ final class DetailsViewController: BaseViewController, LoadingShowable {
         super.viewDidLoad()
         presenter.viewDidLoad()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        searchBar.delegate = self
-
-    }
 }
 
 extension DetailsViewController: DetailsViewControllerInterface {
@@ -44,9 +40,12 @@ extension DetailsViewController: DetailsViewControllerInterface {
     }
     
     func prepareSearchBar(_ placeholder: String) {
-        searchBar.tintColor = .white
+        searchBar.delegate = self
+        searchBar.setupSearchBar(background: .white,
+                                 inputText: .darkGray,
+                                 placeholderText: .darkGray,
+                                 image: .darkGray)
         searchBar.placeholder = placeholder
-        searchBar.searchBarStyle = .prominent
     }
     
     func reloadData() {
@@ -67,6 +66,10 @@ extension DetailsViewController: DetailsViewControllerInterface {
     
     func getSource() -> Source? {
         source
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -98,8 +101,9 @@ extension DetailsViewController: UITableViewDataSource {
 }
 
 extension DetailsViewController: UISearchBarDelegate {
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        view.endEditing(true)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let searchText = searchBar.text {
+            presenter.searchNewsWithTitle(qInTitle: searchText)
+        }
     }
 }

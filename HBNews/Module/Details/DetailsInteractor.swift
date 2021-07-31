@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DetailsInteractorInterface: AnyObject {
-    func fetchNewsDetails(with sourceId: String, page: Int)
+    func fetchNewsDetails(with sourceId: String, page: Int, qInTitle: String?)
 }
 
 protocol DetailsInteractorOutput: AnyObject {
@@ -23,8 +23,8 @@ final class DetailsInteractor {
 }
 
 extension DetailsInteractor: DetailsInteractorInterface {
-    func fetchNewsDetails(with sourceId: String, page: Int) {
-        newsService.fetchDetails(sourceId: sourceId, page: page) { (result) in
+    func fetchNewsDetails(with sourceId: String, page: Int, qInTitle: String?) {
+        newsService.fetchDetails(sourceId: sourceId, page: page, qInTitle: qInTitle) { (result) in
             self.output?.fetchNewsDetailsOutput(result: result)
         }
     }
