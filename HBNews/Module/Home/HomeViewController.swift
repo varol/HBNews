@@ -17,7 +17,7 @@ protocol HomeViewControllerInterface: AnyObject {
 
 class HomeViewController: BaseViewController, LoadingShowable {
     var presenter: HomePresenterInterface!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

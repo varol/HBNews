@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F99E411626B5665200BD9F22 /* NewsDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E411526B5665200BD9F22 /* NewsDetailsResponse.swift */; };
+		F99E411826B56D1E00BD9F22 /* DetailsCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E411726B56D1E00BD9F22 /* DetailsCellPresenter.swift */; };
+		F99E411B26B56EAB00BD9F22 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F99E411A26B56EAB00BD9F22 /* Kingfisher */; };
 		F9A2959326B46F7D002FF335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2959226B46F7D002FF335 /* AppDelegate.swift */; };
 		F9A2959526B46F7D002FF335 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2959426B46F7D002FF335 /* SceneDelegate.swift */; };
 		F9A2959C26B46F7F002FF335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9A2959B26B46F7F002FF335 /* Assets.xcassets */; };
@@ -40,6 +43,8 @@
 		F9A2960826B54070002FF335 /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2960426B54070002FF335 /* DetailsInteractor.swift */; };
 		F9A2960B26B5408C002FF335 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2960926B5408C002FF335 /* DetailsViewController.swift */; };
 		F9A2960C26B5408C002FF335 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A2960A26B5408C002FF335 /* DetailsViewController.xib */; };
+		F9A2961026B5501D002FF335 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2960E26B5501D002FF335 /* DetailsCell.swift */; };
+		F9A2961126B5501D002FF335 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A2960F26B5501D002FF335 /* DetailsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F99E411526B5665200BD9F22 /* NewsDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsResponse.swift; sourceTree = "<group>"; };
+		F99E411726B56D1E00BD9F22 /* DetailsCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCellPresenter.swift; sourceTree = "<group>"; };
 		F9A2958F26B46F7D002FF335 /* HBNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A2959226B46F7D002FF335 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9A2959426B46F7D002FF335 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +105,8 @@
 		F9A2960426B54070002FF335 /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
 		F9A2960926B5408C002FF335 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F9A2960A26B5408C002FF335 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		F9A2960E26B5501D002FF335 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
+		F9A2960F26B5501D002FF335 /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99E411B26B56EAB00BD9F22 /* Kingfisher in Frameworks */,
 				F9A295D326B476DD002FF335 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +136,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F99E411426B5663600BD9F22 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F99E411526B5665200BD9F22 /* NewsDetailsResponse.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		F9A2958626B46F7D002FF335 = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +281,8 @@
 		F9A295F826B53A7D002FF335 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				F99E411426B5663600BD9F22 /* Entity */,
+				F9A2960D26B55006002FF335 /* Views */,
 				F9A2960126B54070002FF335 /* DetailsPresenter.swift */,
 				F9A2960226B54070002FF335 /* DetailsRouter.swift */,
 				F9A2960426B54070002FF335 /* DetailsInteractor.swift */,
@@ -306,6 +326,16 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		F9A2960D26B55006002FF335 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9A2960E26B5501D002FF335 /* DetailsCell.swift */,
+				F9A2960F26B5501D002FF335 /* DetailsCell.xib */,
+				F99E411726B56D1E00BD9F22 /* DetailsCellPresenter.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -324,6 +354,7 @@
 			name = HBNews;
 			packageProductDependencies = (
 				F9A295D226B476DD002FF335 /* Alamofire */,
+				F99E411A26B56EAB00BD9F22 /* Kingfisher */,
 			);
 			productName = HBNews;
 			productReference = F9A2958F26B46F7D002FF335 /* HBNews.app */;
@@ -398,6 +429,7 @@
 			mainGroup = F9A2958626B46F7D002FF335;
 			packageReferences = (
 				F9A295D126B476DD002FF335 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F99E411926B56EAB00BD9F22 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F9A2959026B46F7D002FF335 /* Products */;
 			projectDirPath = "";
@@ -420,6 +452,7 @@
 				F9A295F426B4AB32002FF335 /* SourcesCell.xib in Resources */,
 				F9A2959C26B46F7F002FF335 /* Assets.xcassets in Resources */,
 				F9A295E726B47DDE002FF335 /* HomeViewController.xib in Resources */,
+				F9A2961126B5501D002FF335 /* DetailsCell.xib in Resources */,
 				F9A2960C26B5408C002FF335 /* DetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,8 +483,11 @@
 				F9A295CB26B47155002FF335 /* SplashInteractor.swift in Sources */,
 				F9A2960026B53D63002FF335 /* LoadingShowable.swift in Sources */,
 				F9A295C926B47155002FF335 /* SplashRouter.swift in Sources */,
+				F99E411826B56D1E00BD9F22 /* DetailsCellPresenter.swift in Sources */,
 				F9A295F326B4AB32002FF335 /* SourcesCell.swift in Sources */,
 				F9A295E326B47DC7002FF335 /* HomeInteractor.swift in Sources */,
+				F9A2961026B5501D002FF335 /* DetailsCell.swift in Sources */,
+				F99E411626B5665200BD9F22 /* NewsDetailsResponse.swift in Sources */,
 				F9A295EB26B49D3B002FF335 /* NewsSourcesResponse.swift in Sources */,
 				F9A295E926B49C20002FF335 /* ServiceManager.swift in Sources */,
 				F9A295D626B47753002FF335 /* NetworkManager.swift in Sources */,
@@ -801,6 +837,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F99E411926B56EAB00BD9F22 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.0;
+			};
+		};
 		F9A295D126B476DD002FF335 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -812,6 +856,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F99E411A26B56EAB00BD9F22 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F99E411926B56EAB00BD9F22 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		F9A295D226B476DD002FF335 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F9A295D126B476DD002FF335 /* XCRemoteSwiftPackageReference "Alamofire" */;

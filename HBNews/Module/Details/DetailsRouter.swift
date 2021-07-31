@@ -12,7 +12,7 @@ protocol DetailsRouterInterface: AnyObject {
 }
 
 enum DetailsRoutes {
-    
+    case openURL(url: URL)
 }
 
 class DetailsRouter: NSObject {
@@ -35,7 +35,10 @@ class DetailsRouter: NSObject {
 
 extension DetailsRouter: DetailsRouterInterface {
     func navigate(_ route: DetailsRoutes) {
-        
+        switch route {
+        case .openURL(url: let url):
+            UIApplication.shared.open(url)
+        }
     }
 }
 

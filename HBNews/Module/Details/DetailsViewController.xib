@@ -5,12 +5,13 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController" customModule="HBNews" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="hfw-MT-dPg" id="JdW-v6-1SP"/>
+                <outlet property="tableView" destination="cj0-3y-hdq" id="KXW-bp-QWY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,14 +19,28 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cj0-3y-hdq">
+                    <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hfw-MT-dPg">
+                    <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemYellowColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="cj0-3y-hdq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="BJv-Xp-y8x"/>
+                <constraint firstItem="cj0-3y-hdq" firstAttribute="top" secondItem="hfw-MT-dPg" secondAttribute="bottom" id="Mid-Fc-ZoY"/>
+                <constraint firstItem="hfw-MT-dPg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OxG-br-GJ7"/>
+                <constraint firstItem="cj0-3y-hdq" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="cjh-X6-uag"/>
+                <constraint firstAttribute="trailing" secondItem="hfw-MT-dPg" secondAttribute="trailing" id="iqn-aA-BRX"/>
+                <constraint firstItem="cj0-3y-hdq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rBL-QJ-Bhe"/>
+                <constraint firstItem="hfw-MT-dPg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rb5-5Q-hFH"/>
+            </constraints>
             <point key="canvasLocation" x="139" y="85"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

@@ -48,8 +48,8 @@ final class HomePresenter: HomePresenterInterface {
     }
     
     func didSelectRowAt(index: Int) {
-        guard let sourceId = source(index)?.id else { return }
-        router.navigate(.details(sourceId: sourceId))
+        guard let source = source(index) else { return }
+        router.navigate(.details(source: source))
     }
 }
 

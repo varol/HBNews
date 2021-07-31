@@ -13,14 +13,15 @@ enum Router: URLRequestConvertible {
     
     case sources
     case topHeadlines(source: String?)
-    
+    case everything(source: String?)
+
     var baseURL: URL {
         return URL(string: "https://newsapi.org/v2/")!
     }
 
     var method: HTTPMethod {
         switch self {
-        case .sources, .topHeadlines:
+        case .sources, .topHeadlines, .everything:
             return .get
         }
     }
@@ -34,8 +35,11 @@ enum Router: URLRequestConvertible {
             if let source = source {
                 param["sources"] = source
             }
+        case .everything(source: let source):
+            if let source = source {
+                param["sources"] = source
+            }
         }
-        
         return param
     }
     
@@ -45,6 +49,8 @@ enum Router: URLRequestConvertible {
             return "sources"
         case .topHeadlines(source: _):
             return "top-headlines"
+        case .everything(source: _):
+            return "everything"
         }
     }
 
