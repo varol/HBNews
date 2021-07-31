@@ -9,13 +9,13 @@ import UIKit
 
 protocol DetailsCellInterface: AnyObject {
     func setNewsImageView(_ imageUrl: String)
-    func setReadingListButtonTitle(_ text: String)
+    func setReadingListButtonTitle(_ text: String, isAdded: Bool)
     func setTitleLabel(_ text: String)
     func setDescriptionLabel(_ text: String)
+    func vibrateForReadingList()
 }
 
-
-class DetailsCell: UITableViewCell {
+final class DetailsCell: UITableViewCell {
 
     @IBOutlet private weak var newsImageView: UIImageView!
     @IBOutlet private weak var readingListButton: UIButton!
@@ -27,7 +27,10 @@ class DetailsCell: UITableViewCell {
             presenter.load()
         }
     }
-
+    
+    @IBAction func addReadingListButtonTapped(_ sender: Any) {
+        presenter.addReadingListButtonTapped()
+    }
 }
 
 extension DetailsCell: DetailsCellInterface {
@@ -39,14 +42,16 @@ extension DetailsCell: DetailsCellInterface {
         newsImageView.kf.setImage(with: url) { result in
            switch result {
            case .failure(_):
-            self.newsImageView.image = placeholder
+                self.newsImageView.image = placeholder
            case .success(_):break
            }
          }
 
     }
     
-    func setReadingListButtonTitle(_ text: String) {
+    func setReadingListButtonTitle(_ text: String, isAdded: Bool) {
+        readingListButton.titleLabel?.lineBreakMode = .byWordWrapping
+        readingListButton.titleLabel?.textAlignment = .center
         readingListButton.setTitle(text, for: .normal)
     }
     
@@ -56,5 +61,10 @@ extension DetailsCell: DetailsCellInterface {
     
     func setDescriptionLabel(_ text: String) {
         descriptionLabel.text = text
+    }
+    
+    func vibrateForReadingList() {
+        let tapticFeedback = UINotificationFeedbackGenerator()
+        tapticFeedback.notificationOccurred(.success)
     }
 }

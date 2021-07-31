@@ -15,13 +15,24 @@ protocol DetailsPresenterInterface: AnyObject {
     func didSelectItemAt(index: Int)
     func fetchNextPage()
     func searchNewsWithTitle(qInTitle: String)
+    func addReadingListArticle(url: String)
+}
+
+extension DetailsPresenter {
+    fileprivate enum Constants {
+        static let firstPageIndex: Int = 1
+        static let pageTitle: String = "Search News"
+        static let minimumDelayForSearching: Double = 0.7
+        static let readingList = "readingList"
+    }
 }
 
 final class DetailsPresenter: DetailsPresenterInterface {
+    
     private var articles: [Article] = []
     private var shouldFetchNextPage: Bool = true
     private var isLoading: Bool = false
-    private var pageNumber: Int = 1
+    private var pageNumber: Int = Constants.firstPageIndex
     private let throttler: ThrottlerInterface
 
     unowned var view: DetailsViewControllerInterface?
@@ -31,7 +42,7 @@ final class DetailsPresenter: DetailsPresenterInterface {
     init(interactor: DetailsInteractorInterface,
          router: DetailsRouterInterface,
          view:  DetailsViewControllerInterface,
-         throttler: ThrottlerInterface = Throttler(minimumDelay: 0.7)) {
+         throttler: ThrottlerInterface = Throttler(minimumDelay: Constants.minimumDelayForSearching)) {
         self.view = view
         self.interactor = interactor
         self.router = router
@@ -40,7 +51,8 @@ final class DetailsPresenter: DetailsPresenterInterface {
     
     func viewDidLoad() {
         view?.prepareTableView()
-        view?.prepareSearchBar("Search News")
+        view?.prepareNavigationBar()
+        view?.prepareSearchBar(Constants.pageTitle)
         
         if let title = view?.getSource()?.name {
             view?.setTitle(title)
@@ -81,7 +93,7 @@ final class DetailsPresenter: DetailsPresenterInterface {
     
     func searchNewsWithTitle(qInTitle: String) {
         articles.removeAll()
-        pageNumber = 1
+        pageNumber = Constants.firstPageIndex
         
         throttler.throttle {[weak self] in
             guard let self = self else { return }
@@ -92,6 +104,38 @@ final class DetailsPresenter: DetailsPresenterInterface {
             }
         }
     }
+    
+    func addReadingListArticle(url: String) {
+        var readingListArray = UserDefaults.standard.array(forKey: Constants.readingList) ?? [String]()
+
+        if let readingListStringArray = readingListArray as? [String] {
+            if let index = readingListStringArray.firstIndex(of: url) {
+                readingListArray.remove(at: index)
+            } else {
+                readingListArray.append(url)
+            }
+        }
+
+        UserDefaults.standard.set(readingListArray, forKey: Constants.readingList)
+        UserDefaults.standard.synchronize()
+    }
+    
+    private func checkAndReplaceForReadingList() {
+        guard let readingListArray: [String] = UserDefaults.standard.array(forKey: Constants.readingList) as? [String] else {
+            view?.reloadData()
+            return
+        }
+
+        for (index, item) in articles.enumerated() {
+            if let url = item.url {
+                if readingListArray.contains(url) {
+                    articles[index].readingListStatus = true
+                }
+            }
+        }
+        view?.reloadData()
+    }
+    
 }
 
 extension DetailsPresenter: DetailsInteractorOutput {
@@ -104,8 +148,8 @@ extension DetailsPresenter: DetailsInteractorOutput {
                 shouldFetchNextPage = false
             }
             
+            checkAndReplaceForReadingList()
             view?.hideKeyboard()
-            view?.reloadData()
         case .failure(let error):
             print(error)
         }

@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetailsViewControllerInterface: AnyObject {
     func prepareTableView()
+    func prepareNavigationBar()
     func prepareSearchBar(_ placeholder: String)
     func reloadData()
     func showLoadingView()
@@ -71,6 +72,10 @@ extension DetailsViewController: DetailsViewControllerInterface {
     func hideKeyboard() {
         view.endEditing(true)
     }
+    
+    func prepareNavigationBar() {
+        navigationController?.navigationBar.tintColor = .lightGray
+    }
 }
 
 extension DetailsViewController: UITableViewDelegate {
@@ -94,7 +99,7 @@ extension DetailsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(with: DetailsCell.self,
                                                  for: indexPath)
         if let article = presenter.article(indexPath.item) {
-            cell.presenter = DetailsCellPresenter(view: cell, article: article)
+            cell.presenter = DetailsCellPresenter(view: cell, article: article, delegate: self)
         }
         return cell
     }
@@ -105,5 +110,11 @@ extension DetailsViewController: UISearchBarDelegate {
         if let searchText = searchBar.text {
             presenter.searchNewsWithTitle(qInTitle: searchText)
         }
+    }
+}
+
+extension DetailsViewController: DetailsCellDelegate {
+    func addReadingListButtonTapped(url: String) {
+        presenter.addReadingListArticle(url: url)
     }
 }
