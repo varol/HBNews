@@ -135,7 +135,7 @@ final class DetailsPresenter: DetailsPresenterInterface {
     
     func startTimer() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             if let sourceId = self.view?.getSource()?.id {
                 self.refreshNewsDetails(with: sourceId, page: Constants.firstPageIndex)
