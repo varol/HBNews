@@ -15,10 +15,10 @@ struct NewsSourcesResponse: Codable {
 
 // MARK: - Source
 struct Source: Codable {
-    let id, name, sourceDescription: String
+    let id, name, sourceDescription: String?
     let url: String
-    let category: Category
-    let language, country: String
+    let category: Category?
+    let language, country: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name

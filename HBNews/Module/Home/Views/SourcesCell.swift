@@ -12,7 +12,7 @@ protocol SourcesCellInterface: AnyObject {
     func setDescriptionLabel(_ text: String)
 }
 
-class SourcesCell: UITableViewCell {
+final class SourcesCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     

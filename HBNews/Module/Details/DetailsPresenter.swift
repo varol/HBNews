@@ -16,6 +16,8 @@ protocol DetailsPresenterInterface: AnyObject {
     func fetchNextPage()
     func searchNewsWithTitle(qInTitle: String)
     func addReadingListArticle(url: String)
+    func startTimer()
+    func stopTimer()
 }
 
 extension DetailsPresenter {
@@ -55,13 +57,8 @@ final class DetailsPresenter: DetailsPresenterInterface {
         view?.prepareNavigationBar()
         view?.prepareSearchBar(Constants.pageTitle)
         startTimer()
-        if let title = view?.getSource()?.name {
-            view?.setTitle(title)
-        }
-        
-        if let sourceId = view?.getSource()?.id {
-            fetchNewsDetails(with: sourceId, page: pageNumber)
-        }
+        view?.setTitle(view?.getSource()?.name ?? "")
+        fetchNewsDetails(with: view?.getSource()?.id ?? "", page: pageNumber)
     }
     
     func numberOfItems() -> Int {
@@ -89,9 +86,7 @@ final class DetailsPresenter: DetailsPresenterInterface {
     func fetchNextPage() {
         if shouldFetchNextPage {
             pageNumber += 1
-            if let sourceId = view?.getSource()?.id {
-                fetchNewsDetails(with: sourceId, page: pageNumber)
-            }
+            fetchNewsDetails(with: view?.getSource()?.id ?? "", page: pageNumber)
         }
     }
     
@@ -101,11 +96,9 @@ final class DetailsPresenter: DetailsPresenterInterface {
         
         throttler.throttle {[weak self] in
             guard let self = self else { return }
-            if let sourceId = self.view?.getSource()?.id {
-                self.interactor.fetchNewsDetails(with: sourceId,
-                                                 page: self.pageNumber,
-                                                 qInTitle: qInTitle)
-            }
+            self.interactor.fetchNewsDetails(with: self.view?.getSource()?.id ?? "",
+                                             page: self.pageNumber,
+                                             qInTitle: qInTitle)
         }
     }
     
@@ -144,7 +137,6 @@ final class DetailsPresenter: DetailsPresenterInterface {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            print("hello")
             if let sourceId = self.view?.getSource()?.id {
                 self.refreshNewsDetails(with: sourceId, page: Constants.firstPageIndex)
             }
@@ -185,6 +177,7 @@ extension DetailsPresenter: DetailsInteractorOutput {
                     self.articles.removeAll()
                     pageNumber = Constants.firstPageIndex
                     self.articles.append(contentsOf: articles)
+                    view?.showToastMessage()
                 }
             }
             checkAndReplaceForReadingList()

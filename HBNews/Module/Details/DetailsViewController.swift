@@ -17,6 +17,13 @@ protocol DetailsViewControllerInterface: AnyObject {
     func setTitle(_ title: String)
     func getSource() -> Source?
     func hideKeyboard()
+    func showToastMessage()
+}
+
+extension DetailsViewController {
+    fileprivate enum Constants {
+        static let toastMessageText: String = "Yeni haberler eklendi"
+    }
 }
 
 final class DetailsViewController: BaseViewController, LoadingShowable {
@@ -75,6 +82,10 @@ extension DetailsViewController: DetailsViewControllerInterface {
     
     func prepareNavigationBar() {
         navigationController?.navigationBar.tintColor = .lightGray
+    }
+    
+    func showToastMessage() {
+        view.makeToast(Constants.toastMessageText)
     }
 }
 

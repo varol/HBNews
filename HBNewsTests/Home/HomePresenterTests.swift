@@ -53,6 +53,10 @@ class HomePresenterTests: XCTestCase {
         XCTAssertTrue(view.invokedReloadData)
         XCTAssertNotNil(presenter.source(_: 0))
     }
+    
+    func test_numberOfItems_NilResponse_ReturnItemCount() {
+        XCTAssertEqual(presenter.numberOfItems(), 0)
+    }
 }
 
 extension NewsSourcesResponse {

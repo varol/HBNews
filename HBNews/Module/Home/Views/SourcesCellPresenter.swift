@@ -25,7 +25,7 @@ final class SourcesCellPresenter {
 
 extension SourcesCellPresenter : SourcesCellPresenterInterface {
     func load() {
-        view?.setTitleLabel(source.name)
-        view?.setDescriptionLabel(source.sourceDescription)
+        view?.setTitleLabel(source.name ?? "")
+        view?.setDescriptionLabel(source.sourceDescription ?? "")
     }
 }

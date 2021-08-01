@@ -46,7 +46,6 @@ extension DetailsCell: DetailsCellInterface {
            case .success(_):break
            }
          }
-
     }
     
     func setReadingListButtonTitle(_ text: String, isAdded: Bool) {
