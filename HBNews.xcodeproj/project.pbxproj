@@ -13,6 +13,11 @@
 		F99E412226B5AEF700BD9F22 /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E412026B5AEF700BD9F22 /* DetailsCell.swift */; };
 		F99E412326B5AEF700BD9F22 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F99E412126B5AEF700BD9F22 /* DetailsCell.xib */; };
 		F99E412526B5D0B600BD9F22 /* Throttle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E412426B5D0B600BD9F22 /* Throttle.swift */; };
+		F99E412726B68BE300BD9F22 /* MockHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E412626B68BE300BD9F22 /* MockHomeViewController.swift */; };
+		F99E412A26B68D0900BD9F22 /* MockHomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E412926B68D0900BD9F22 /* MockHomeInteractor.swift */; };
+		F99E412C26B68DBA00BD9F22 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E412B26B68DBA00BD9F22 /* HomePresenterTests.swift */; };
+		F99E412E26B68E8100BD9F22 /* MockHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99E412D26B68E8100BD9F22 /* MockHomeRouter.swift */; };
+		F99E413426B6995600BD9F22 /* NewsSourcesResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = F99E413326B6995600BD9F22 /* NewsSourcesResponse.json */; };
 		F9A2959326B46F7D002FF335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2959226B46F7D002FF335 /* AppDelegate.swift */; };
 		F9A2959526B46F7D002FF335 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A2959426B46F7D002FF335 /* SceneDelegate.swift */; };
 		F9A2959C26B46F7F002FF335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9A2959B26B46F7F002FF335 /* Assets.xcassets */; };
@@ -71,6 +76,11 @@
 		F99E412026B5AEF700BD9F22 /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
 		F99E412126B5AEF700BD9F22 /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 		F99E412426B5D0B600BD9F22 /* Throttle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttle.swift; sourceTree = "<group>"; };
+		F99E412626B68BE300BD9F22 /* MockHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewController.swift; sourceTree = "<group>"; };
+		F99E412926B68D0900BD9F22 /* MockHomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeInteractor.swift; sourceTree = "<group>"; };
+		F99E412B26B68DBA00BD9F22 /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
+		F99E412D26B68E8100BD9F22 /* MockHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeRouter.swift; sourceTree = "<group>"; };
+		F99E413326B6995600BD9F22 /* NewsSourcesResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NewsSourcesResponse.json; sourceTree = "<group>"; };
 		F9A2958F26B46F7D002FF335 /* HBNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A2959226B46F7D002FF335 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9A2959426B46F7D002FF335 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +156,18 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		F99E412826B68CE100BD9F22 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F99E412626B68BE300BD9F22 /* MockHomeViewController.swift */,
+				F99E412926B68D0900BD9F22 /* MockHomeInteractor.swift */,
+				F99E412B26B68DBA00BD9F22 /* HomePresenterTests.swift */,
+				F99E412D26B68E8100BD9F22 /* MockHomeRouter.swift */,
+				F99E413326B6995600BD9F22 /* NewsSourcesResponse.json */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		F9A2958626B46F7D002FF335 = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +203,7 @@
 		F9A295A826B46F7F002FF335 /* HBNewsTests */ = {
 			isa = PBXGroup;
 			children = (
+				F99E412826B68CE100BD9F22 /* Home */,
 				F9A295A926B46F7F002FF335 /* HBNewsTests.swift */,
 				F9A295AB26B46F7F002FF335 /* Info.plist */,
 			);
@@ -464,6 +487,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99E413426B6995600BD9F22 /* NewsSourcesResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +541,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9A295AA26B46F7F002FF335 /* HBNewsTests.swift in Sources */,
+				F99E412726B68BE300BD9F22 /* MockHomeViewController.swift in Sources */,
+				F99E412E26B68E8100BD9F22 /* MockHomeRouter.swift in Sources */,
+				F99E412A26B68D0900BD9F22 /* MockHomeInteractor.swift in Sources */,
+				F99E412C26B68DBA00BD9F22 /* HomePresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
